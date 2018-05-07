@@ -1,0 +1,27 @@
+{% extends 'nhlinfo/base.html' %}
+
+{% block title %}
+    Division - {{ division }}
+{% endblock %}
+
+{% block content %}
+    <article>
+        <div class="row">
+            <div class="offset-by-two eight columns">
+                <h2>{{ division }}</h2>
+                <section>
+                    <h3>Teams</h3>
+                    {% for team in team_list %}
+                        <li>
+                            <a href="{{ team.get_absolute_url }}"> {{ team }}</a>
+                        </li>
+                    {% endfor %}
+
+                </section>
+
+
+            </div>
+        </div> <!-- row -->
+
+    </article>
+{% endblock %}

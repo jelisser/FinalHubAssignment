@@ -1,0 +1,28 @@
+{% extends 'nhlinfo/base.html' %}
+
+{% block title %}
+    Defense - {{ defense}}
+{% endblock %}
+
+{% block content %}
+    <article>
+        <div class="row">
+            <div class="offset-by-two eight columns">
+                <h2>{{ defense }}</h2>
+                <section>
+                    <h3>Stats</h3>
+                    <ul>
+                        <li>First Name: {{ defense.defense_fname }}</li>
+                        <li>Last Name: {{ defense.defense_lname }}</li>
+                        <li>Nationality: {{ defense.defense_nat }}</li>
+                        <li>Height: {{ defense.defense_ht }}</li>
+                        <li>Weight: {{ defense.defense_wt }}</li>
+                        <li>Goals Against in the 2016-2017 Season: {{ defense.defense_ga }}</li>
+                        <li>Time on Ice (Minutes) in the 2016-2017 Season: {{ defense.defense_toi }}</li>
+                    </ul>
+                </section>
+            </div>
+        </div> <!-- row -->
+
+    </article>
+{% endblock %}

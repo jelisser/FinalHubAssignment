@@ -1,0 +1,18 @@
+{% extends 'nhlinfo/base.html' %}
+
+{% block title %}
+    Forward List
+{% endblock %}
+
+{% block org_content %}
+  <h2>Forward List</h2>
+  <ul>
+    {% for forward in forward_list %}
+      <li>
+        <a href="{{ forward.get_absolute_url }}">
+          {{ forward }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+

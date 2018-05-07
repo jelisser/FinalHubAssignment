@@ -1,0 +1,27 @@
+{% extends 'nhlinfo/base.html' %}
+
+{% block title %}
+    Conference - {{ conference }}
+{% endblock %}
+
+{% block content %}
+    <article>
+        <div class="row">
+            <div class="offset-by-two eight columns">
+                <h2>{{ conference }}</h2>
+                <section>
+                    <h3>Divisions</h3>
+                    {% for division in division_list %}
+                        <li>
+                            <a href="{{ division.get_absolute_url }}"> {{ division }}</a>
+                        </li>
+                    {% endfor %}
+
+                </section>
+
+
+            </div>
+        </div> <!-- row -->
+
+    </article>
+{% endblock %}

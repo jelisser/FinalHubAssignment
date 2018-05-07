@@ -1,0 +1,27 @@
+{% extends 'nhlinfo/base.html' %}
+
+{% block title %}
+    Game Schedule
+{% endblock %}
+
+{% block content %}
+  <div>
+    <h2>Important Links</h2>
+      <p>
+      <a href="https://www.nhl.com/subscribe"
+          class="button">
+            NHL.TV</a>
+      <a href="https://www.nhl.com/stanley-cup-playoffs" class="button">Playoff Bracket</a>
+      <a href="https://puckplusplus.com/" class="button">Puck Plus Plus</a>
+      <a href="http://www.thehockeynews.com/" class = "button">The Hockey News</a>
+      </p>
+    <h2>Game Schedule</h2>
+        <p>All times are in CST. </p>
+      <p>Playoff games are added once formally announced by the NHL.</p>
+    <iframe src="https://calendar.google.com/calendar/embed?src=ci2dt66dapt2aqeiep4hsk3l68%40group.calendar.google.com&ctz=America%2FChicago"
+               style="border: 0" width="800" height="600" frameborder="0" scrolling="no">
+
+    </iframe>
+    </div>
+  </div>
+{% endblock %}

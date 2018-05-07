@@ -1,0 +1,28 @@
+{% extends 'nhlinfo/base.html' %}
+
+{% block title %}
+    Goalie - {{ goalie}}
+{% endblock %}
+
+{% block content %}
+    <article>
+        <div class="row">
+            <div class="offset-by-two eight columns">
+                <h2>{{ goalie }}</h2>
+                <section>
+                    <h3>Stats</h3>
+                    <ul>
+                        <li>First Name: {{ goalie.goalie_fname }}</li>
+                        <li>Last Name: {{ goalie.goalie_lname }}</li>
+                        <li>Nationality: {{ goalie.goalie_nat }}</li>
+                        <li>Height: {{ goalie.goalie_ht }}</li>
+                        <li>Weight: {{ goalie.goalie_wt }}</li>
+                        <li>Goals Against in the 2016-2017 Season: {{ goalie.goalie_ga }}</li>
+                        <li>Save Percentage in the 2016-2017 Season: {{ goalie.goalie_sp }}</li>
+                    </ul>
+                </section>
+            </div>
+        </div> <!-- row -->
+
+    </article>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'nhlinfo/base.html' %}
+
+{% block title %}
+    Forward - {{ forward }}
+{% endblock %}
+
+{% block content %}
+    <article>
+        <div class="row">
+            <div class="offset-by-two eight columns">
+                <h2>{{ forward }}</h2>
+                <section>
+                    <h3>Stats</h3>
+                    <ul>
+                        <li>First Name: {{ forward.forward_fname }}</li>
+                        <li>Last Name: {{ forward.forward_lname }}</li>
+                        <li>Nationality: {{ forward.forward_nat }}</li>
+                        <li>Height: {{ forward.forward_ht }}</li>
+                        <li>Weight: {{ forward.forward_wt }}</li>
+                        <li>Points in the 2016-2017 Season: {{ forward.forward_pts }}</li>
+                        <li>Time on Ice (Minutes) in the 2016-2017 Season: {{ forward.forward_toi }}</li>
+                    </ul>
+                </section>
+            </div>
+        </div> <!-- row -->
+
+    </article>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'nhlinfo/base.html' %}
+
+{% block title %}
+    Team List
+{% endblock %}
+
+{% block org_content %}
+  <h2>Team List</h2>
+  <ul>
+    {% for team in team_list %}
+      <li>
+        <a href="{{ team.get_absolute_url }}">
+          {{ team }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+
