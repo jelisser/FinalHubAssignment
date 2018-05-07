@@ -64,6 +64,7 @@ class Forward(models.Model):
     forward_pts = models.CharField(max_length=25, default=None)
     forward_toi = models.CharField(max_length=25, default=None)
     forward_nat = models.CharField(max_length=25, default=None)
+    forward_com = models.TextField(default=None, null=True)
 
     def __str__(self):
         return '%s, %s - (%s)' % (self.forward_lname, self.forward_fname,self.forward_abv)
@@ -71,6 +72,10 @@ class Forward(models.Model):
     def get_absolute_url(self):
         return reverse('nhlinfo_forward_detail_urlpattern',
                        kwargs={'requested_forward_id':self.forward_id})
+
+    def get_update_url(self):
+        return reverse('nhlinfo_forward_update_urlpattern',
+                       kwargs={'pk':self.forward_id})
 
     class Meta:
         ordering = ['forward_lname','forward_fname','forward_abv']
@@ -86,6 +91,7 @@ class Defense(models.Model):
     defense_ga = models.CharField(max_length=25, default=None)
     defense_toi = models.CharField(max_length=25, default=None)
     defense_nat = models.CharField(max_length=3)
+    defense_com = models.TextField(default=None, null=True)
 
 
     def __str__(self):
@@ -94,6 +100,10 @@ class Defense(models.Model):
     def get_absolute_url(self):
         return reverse('nhlinfo_defense_detail_urlpattern',
                        kwargs={'requested_defense_id':self.defense_id})
+
+    def get_update_url(self):
+        return reverse('nhlinfo_defense_update_urlpattern',
+                       kwargs={'pk':self.defense_id})
 
     class Meta:
         ordering = ['defense_lname','defense_fname','defense_abv']
@@ -109,6 +119,7 @@ class Goalie(models.Model):
     goalie_ga = models.CharField(max_length=25, default=None)
     goalie_sp = models.CharField(max_length=25, default=None)
     goalie_nat = models.CharField(max_length=3, default=None)
+    goalie_com = models.TextField(default=None, null=True)
 
     def __str__(self):
         return '%s, %s - (%s)' %(self.goalie_lname, self.goalie_fname, self.goalie_abv)
@@ -116,6 +127,10 @@ class Goalie(models.Model):
     def get_absolute_url(self):
         return reverse('nhlinfo_goalie_detail_urlpattern',
                        kwargs={'requested_goalie_id': self.goalie_id })
+
+    def get_update_url(self):
+        return reverse('nhlinfo_goalie_update_urlpattern',
+                       kwargs={'pk':self.goalie_id})
 
     class Meta:
         ordering = ['goalie_lname', 'goalie_fname', 'goalie_abv']

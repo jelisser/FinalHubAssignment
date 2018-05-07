@@ -20,14 +20,13 @@
                         <li>Goals Against in the 2016-2017 Season: {{ goalie.goalie_ga }}</li>
                         <li>Save Percentage in the 2016-2017 Season: {{ goalie.goalie_sp }}</li>
                     </ul>
-                    {% if perms.nhlinfo.change_goalie %}
                     <h3>Comment</h3>
-                    {{ goalie.goalie_com }}
-                </section>
-                <a href="{{ goalie.get_update_url }}"
-                class="button">
-                Create Player Comment</a>
-                {% endif %}
+                    <form action="{{ goalie.get_update_url }}" method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                    <button class="button-primary" type="submit">
+                     Update Comment</button>
+                     </form>
                 </section>
             </div>
         </div> <!-- row -->

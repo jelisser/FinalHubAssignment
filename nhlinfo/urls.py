@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 from nhlinfo.views import ConferenceList, ConferenceDetail, DivisionDetail, DivisionList, TeamList, TeamDetail, \
-    ForwardList, ForwardDetail, DefenseList, DefenseDetail, GoalieList, GoalieDetail
+    ForwardList, ForwardDetail, DefenseList, DefenseDetail, GoalieList, GoalieDetail, ForwardUpdate, DefenseUpdate, \
+    GoalieUpdate
 
 urlpatterns = [
     url(r'^conference/$',
@@ -46,6 +47,9 @@ urlpatterns = [
     url(r'forward/(?P<requested_forward_id>[\d]+)/$',
         ForwardDetail.as_view(),
         name='nhlinfo_forward_detail_urlpattern'),
+    url(r'forward/(?P<pk>[\d]+)/update/$',
+        ForwardUpdate.as_view(),
+        name='nhlinfo_forward_update_urlpattern'),
     url(r'^defense/$',
         DefenseList.as_view(),
         name='nhlinfo_defense_list_urlpattern'
@@ -53,6 +57,9 @@ urlpatterns = [
     url(r'defense/(?P<requested_defense_id>[\d]+)/$',
         DefenseDetail.as_view(),
         name='nhlinfo_defense_detail_urlpattern'),
+    url(r'defense/(?P<pk>[\d]+)/update/$',
+        DefenseUpdate.as_view(),
+        name='nhlinfo_defense_update_urlpattern'),
     url(r'^goalie/$',
         GoalieList.as_view(),
         name='nhlinfo_goalie_list_urlpattern'
@@ -60,4 +67,7 @@ urlpatterns = [
     url(r'goalie/(?P<requested_goalie_id>[\d]+)/$',
         GoalieDetail.as_view(),
         name='nhlinfo_goalie_detail_urlpattern'),
+    url(r'goalie/(?P<pk>[\d]+)/update/$',
+        GoalieUpdate.as_view(),
+        name='nhlinfo_goalie_update_urlpattern'),
 ]

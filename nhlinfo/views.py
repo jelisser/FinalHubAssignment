@@ -9,7 +9,8 @@ from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
-
+from nhlinfo.decorators import require_authenticated_permission
+from nhlinfo.forms import ForwardForm, DefenseForm, GoalieForm
 from .utils import PageLinksMixin
 from .models import Conference, Division, Goalie, Team, Defense, Forward
 
@@ -90,6 +91,15 @@ class ForwardDetail(View):
             {'forward': forward, 'team_list': team_list}
         )
 
+@require_authenticated_permission(
+    'nhlinfo.change_forward'
+)
+class ForwardUpdate(UpdateView):
+    form_class=ForwardForm
+    model=Forward
+    template_name='nhlinfo/forward_form_update.html'
+
+
 class DefenseList(PageLinksMixin, ListView):
     paginate_by = 25
     model = Defense
@@ -107,6 +117,15 @@ class DefenseDetail(View):
             {'defense': defense}
         )
 
+
+@require_authenticated_permission(
+    'nhlinfo.change_defense'
+)
+class DefenseUpdate(UpdateView):
+    form_class=DefenseForm
+    model=Defense
+    template_name='nhlinfo/defense_form_update.html'
+
 class GoalieList(PageLinksMixin, ListView):
     paginate_by = 25
     model = Goalie
@@ -123,4 +142,12 @@ class GoalieDetail(View):
             'nhlinfo/goalie_detail.html',
             {'goalie': goalie}
         )
+
+@require_authenticated_permission(
+    'nhlinfo.change_goalie'
+)
+class GoalieUpdate(UpdateView):
+    form_class=GoalieForm
+    model=Goalie
+    template_name='nhlinfo/goalie_form_update.html'
 

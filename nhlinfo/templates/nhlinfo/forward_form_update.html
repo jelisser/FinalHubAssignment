@@ -20,14 +20,13 @@
                         <li>Points in the 2016-2017 Season: {{ forward.forward_pts }}</li>
                         <li>Time on Ice (Minutes) in the 2016-2017 Season: {{ forward.forward_toi }}</li>
                     </ul>
-                    {% if perms.nhlinfo.change_forward %}
                     <h3>Comment</h3>
-                    {{ forward.forward_com }}
-                </section>
-                <a href="{{ forward.get_update_url }}"
-                class="button">
-                Create Player Comment</a>
-                {% endif %}
+                    <form action="{{ forward.get_update_url }}" method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                    <button class="button-primary" type="submit">
+                     Update Comment</button>
+                     </form>
             </div>
         </div> <!-- row -->
 

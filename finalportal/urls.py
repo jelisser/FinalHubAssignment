@@ -17,6 +17,8 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import login
 from django.views.generic import RedirectView, TemplateView
+from django.contrib.auth import views as auth_views
+
 
 from nhlinfo import urls as nhlinfo_urls
 
@@ -31,6 +33,14 @@ urlpatterns = [
             template_name='nhlinfo/feeds.html'),
         name='calendar_urlpattern'
         ),
+    url(r'^login/$',
+        auth_views.login,
+        {'template_name': 'nhlinfo/login.html'},
+        name='login_urlpattern'),
+    url(r'^logout/$',
+        auth_views.logout,
+        {'next_page':'/login/'},
+        name='logout_urlpattern'),
 
     url(r'^admin/', admin.site.urls),
     url(r'^', include(nhlinfo_urls)),

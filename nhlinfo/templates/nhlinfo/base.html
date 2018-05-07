@@ -26,6 +26,7 @@
 <body>
 
 <div class="container">
+
     <header class="row">
         <div class="offset-by-one ten columns">
             <h1 class="logo">NHL Analytics Hub</h1>
@@ -55,6 +56,12 @@
             <li>
                 <a href="{% url 'calendar_urlpattern' %}">
                     Game Calendar</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'logout_urlpattern' %}">Log Out, {{ user.get_username }}</a></li>
+                {% else %}
+                <li><a href="{% url 'login_urlpattern' %}">Log In</a> </a></li>
+                {% endif %}
+
 
         </ul>
     </nav>

@@ -20,15 +20,15 @@
                         <li>Goals Against in the 2016-2017 Season: {{ defense.defense_ga }}</li>
                         <li>Time on Ice (Minutes) in the 2016-2017 Season: {{ defense.defense_toi }}</li>
                     </ul>
-                    {% if perms.nhlinfo.change_defense %}
-                     <h3>Comment</h3>
-                    {{ defense.defense_com }}
+                    <h3>Comment</h3>
+                    <form action="{{ defense.get_update_url }}" method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                    <button class="button-primary" type="submit">
+                     Update Comment</button>
+                     </form>
                 </section>
-                <a href="{{ defense.get_update_url }}"
-                class="button">
-                Create Player Comment</a>
-                {% endif %}
-                </section>
+                
             </div>
         </div> <!-- row -->
 
